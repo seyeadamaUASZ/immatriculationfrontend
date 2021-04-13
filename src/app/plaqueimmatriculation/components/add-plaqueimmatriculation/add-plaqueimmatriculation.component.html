@@ -1,0 +1,205 @@
+<br><br>
+<div class="login-page">
+  <div class="">
+    <h3 class="card-heading ">
+      <strong class="foncer">
+        {{ "plaqueimmatriculation.register" | translate }}
+      </strong>
+    </h3>
+    <form class="" [formGroup]="PlaqueImmatriculationForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>{{'plaqueimmatriculation.nbPlaceDebout' | translate }} </mat-label>
+        <input matInput type="text"
+          formControlName="nbPlaceDebout" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.nbPlaceAssises' | translate }}</mat-label>
+        <input matInput  type="text"
+          formControlName="nbPlaceAssises" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.taxeRegionale' | translate }}</mat-label>
+        <input matInput  type="text"
+          formControlName="taxeRegionale" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{'plaqueimmatriculation.taxeParafiscale' | translate }}</mat-label>
+        <input matInput  type="text" formControlName="taxeParafiscale" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.taxeCO2' | translate }}</mat-label>
+        <input matInput  type="text"
+          formControlName="taxeCO2" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{
+          'plaqueimmatriculation.fraisTraitementDossier' | translate
+        }}t</mat-label>
+        <input matInput type="text" formControlName="fraisTraitementDossier" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.carosserie' | translate }}</mat-label>
+        <input matInput type="text"
+          formControlName="carosserie" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{
+          'plaqueimmatriculation.largeurVehicule' | translate
+        }}</mat-label>
+        <input matInput type="text" formControlName="largeurVehicule" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          'plaqueimmatriculation.longeurVehicule' | translate
+        }}</mat-label>
+        <input matInput  type="text" formControlName="longeurVehicule" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          'plaqueimmatriculation.typeVarianteVersion' | translate
+        }}</mat-label>
+        <input matInput  type="text" formControlName="typeVarianteVersion" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.genreVehicule' | translate }}</mat-label>
+        <input matInput  type="text"
+          formControlName="genreVehicule" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          'plaqueimmatriculation.regionExpedition' | translate
+        }}</mat-label>
+        <input matInput type="text" formControlName="regionExpedition" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.tarif' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="tarif" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.sexe' | translate }}</mat-label>
+        <input matInput placeholder="" type="text" formControlName="sexe"
+          required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{ 'plaqueimmatriculation.region' | translate }}</mat-label>
+        <input matInput type="text"
+          formControlName="region" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{
+          'plaqueimmatriculation.typeImmatriculation' | translate
+        }}</mat-label>
+        <mat-select formControlName="typeImmatriculation" required>
+          <mat-option value="voiture">
+            voiture
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label >{{
+          'plaqueimmatriculation.precedenteImmat' | translate
+        }}</mat-label>
+        <input matInput  type="text" formControlName="precedenteImmat" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          "plaqueimmatriculation.dateImmatVehicule" | translate
+          }}</mat-label>
+        <input matInput [matDatepicker]="picker4" formControlName="dateImmatVehicule" required />
+        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+        <mat-datepicker #picker4 startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          "plaqueimmatriculation.dateMiseCirculation" | translate
+          }}</mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="dateMiseCirculation" required />
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3 startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          "plaqueimmatriculation.datePrecedenteImmatriculation" | translate
+          }}</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="datePrecedenteImmatriculation" required />
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.couleur' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="couleur" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.marque' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="marque" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.puissance' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="puissance" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.emission' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="emission" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.energie' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="energie" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.telephone' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="telephone" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{
+          "plaqueimmatriculation.dateNaissance" | translate
+          }}</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dateNaissance" required />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.lieuNaissance' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="lieuNaissance" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.nom' | translate }}</mat-label>
+        <input matInput placeholder="" type="text" formControlName="nom"
+          required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.email' | translate }}</mat-label>
+        <input matInput placeholder="" type="email"
+          formControlName="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{ 'plaqueimmatriculation.prenom' | translate }}</mat-label>
+        <input matInput placeholder="" type="text"
+          formControlName="prenom" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label matSuffix>{{
+          'plaqueimmatriculation.numeroImmatriculation' | translate
+        }}</mat-label>
+        <input matInput placeholder="" type="text" formControlName="numeroImmatriculation" required />
+      </mat-form-field>
+      <div class="buttons">
+        <div class="login">
+          <button mat-stroked-button color="warn" (click)="closeDialog()" type="button">
+            {{ "btn_fermer" | translate }}
+          </button>
+          <button mat-raised-button color="primary" type="submit">
+            {{ "btn_valider" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,437 @@
+<div *ngIf="demandevehicule">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="centrer">
+        <strong class="foncer agrandir"> {{'titre.demandeur' | translate}}
+        </strong>
+      </h3>
+    </div>
+  </div>
+</div>
+<div *ngIf="!demandevehicule && generernumimmat">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="centrer  ">
+        <strong class="foncer agrandir"> {{'titre.serviceDesMines' | translate}}
+        </strong>
+      </h3>
+    </div>
+  </div>
+</div>
+<div *ngIf="!demandevehicule && calculertarif">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="centrer">
+        <strong class="foncer agrandir"> {{'titre.impotsEtDomaines' | translate}}
+        </strong>
+      </h3>
+    </div>
+  </div>
+</div>
+<div *ngFor="let widget of widgets">
+  <div *ngIf="widget.wdgCode=='nbr_by_mdl'">
+    <div class="row">
+      <div class="col-sm-12">
+        <app-stats> </app-stats>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div *ngFor="let widget of widgets">
+  <div *ngIf="widget.wdgCode=='stat_demande'">
+    <app-stat-demande> </app-stat-demande>
+  </div>
+</div>
+<br>
+<br>
+<div *ngFor="let widget of widgets">
+  <div *ngIf="widget.wdgCode=='stat_traitement_index'">
+    <app-stat-traitant-un> </app-stat-traitant-un>
+  </div>
+</div>
+<br>
+<div *ngFor="let widget of widgets">
+  <div *ngIf="widget.wdgCode=='stat_traitement_deux'">
+    <app-stat-traitant-deux> </app-stat-traitant-deux>
+
+  </div>
+</div>
+<br>
+
+<div *ngFor="let widget of widgets">
+  <div *ngIf="widget.wdgCode=='stats_costumer'">
+    <div class="row">
+      <div class="col-sm-12">
+        <app-stats-costumer> </app-stats-costumer>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="b && l">
+  <div class="row">
+    <div class="col-sm-6">
+      <app-wkform-courbe></app-wkform-courbe>
+    </div>
+    <div class="col-sm-6">
+      <app-users-barre></app-users-barre>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="b && !l ">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <app-users-barre></app-users-barre>
+    </div>
+  </div>
+</div>
+<div *ngIf="l && !b">
+  <div class="row">
+    <div class="col-sm-6">
+      <app-wkform-courbe></app-wkform-courbe>
+    </div>
+  </div>
+</div>
+<!-- <mat-progress-bar *ngIf="charger" mode="query"></mat-progress-bar> -->
+
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="mymargin" color="primary">view_agenda</mat-icon>
+      {{'demandevehicule.demande' | translate}}
+    </ng-template>
+    <mat-card class="">
+      <mat-card-header class="card-header">
+        <span class="header">{{ "demandevehicule.atraiter" | translate }}</span>
+      </mat-card-header>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "utilisateur.filtre" | translate }}</mat-label>
+        <input matInput (keyup)="applyFilter($event)" />
+      </mat-form-field>
+      <button *ngIf="demandevehicule" mat-mini-fab color="primary" class="add-contact" (click)="openDialogAdd()"
+        matTooltip="{{ 'demandevehicule.add' | translate }}">
+        <mat-icon>add</mat-icon>
+      </button>
+      <div class="">
+        <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+          <!-- <ng-container matColumnDef="adresse">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "adresse" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.adresse }}</td>
+      </ng-container> -->
+          <!-- <ng-container matColumnDef="carosserie">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "carosserie" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.carosserie }}</td>
+      </ng-container>
+      <ng-container matColumnDef="codecession">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "codecession" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.codecession }}</td>
+      </ng-container>
+      <ng-container matColumnDef="couleur">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "couleur" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.couleur }}</td>
+      </ng-container>
+      <ng-container matColumnDef="datenaissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "datenaissance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.datenaissance }}</td>
+      </ng-container> -->
+          <!-- <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "demandevehicule.email" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container> -->
+          <!-- <ng-container matColumnDef="emissionco2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "emissionco2" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.emissionco2 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="energie">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "energie" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.energie }}</td>
+      </ng-container>
+      <ng-container matColumnDef="genrevehicule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "genrevehicule" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.genrevehicule }}</td>
+      </ng-container>
+      <ng-container matColumnDef="largeur">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "largeur" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.largeur }}</td>
+      </ng-container>
+      <ng-container matColumnDef="lieunaissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "lieunaissance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.lieunaissance }}</td>
+      </ng-container>
+      <ng-container matColumnDef="longeur">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "longeur" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.longeur }}</td>
+      </ng-container>
+      <ng-container matColumnDef="marque">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "marque" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.marque }}</td>
+      </ng-container> -->
+          <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.nom" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="numeroimmat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "numeroimmat" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.numeroimmat }}</td>
+      </ng-container>
+      <ng-container matColumnDef="placesassises">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "placesassises" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.placesassises }}</td>
+      </ng-container>
+      <ng-container matColumnDef="placesdebout">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "placesdebout" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.placesdebout }}</td>
+      </ng-container> -->
+          <ng-container matColumnDef="prenom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.prenom" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.prenom }}</td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="puissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "puissance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.puissance }}</td>
+      </ng-container>
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "region" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.region }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sexe">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "sexe" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.sexe }}</td>
+      </ng-container>-->
+          <ng-container matColumnDef="telephone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.telephone" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.telephone }}</td>
+          </ng-container>
+          <ng-container matColumnDef="typedemande">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.typedemande" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.typedemande }}</td>
+          </ng-container>
+          <!--
+      <ng-container matColumnDef="typeusage">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "typeusage" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.typeusage }}</td>
+      </ng-container>-->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "status" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button *ngIf="element.status == 1">Demarrer</button>
+              <button disabled mat-raised-button style="background-color: #ffe227;color: rgb(19, 18, 18);"
+                *ngIf="element.status == 2"> {{ "Action.encoursTraitement1" | translate }}</button>
+              <button disabled mat-raised-button style="background-color: #ffe227;color: rgb(14, 13, 13);"
+                *ngIf="element.status == 3">{{ "Action.encoursTraitement2" | translate }}</button>
+              <button mat-raised-button color="primary" color="primary" *ngIf="element.status == 4"
+                (click)="openApayer(element)">
+                {{ "Action.apayer" | translate }}</button>
+              <button mat-raised-button style="background-color: #ef4f4f;color: rgb(24, 23, 23);"
+                *ngIf="element.status == 7">{{ "Action.echec" | translate }}</button>
+
+              <button disabled mat-raised-button style="background-color: rgb(44, 196, 95);color: rgb(17, 16, 16);"
+                *ngIf="element.status == 5 && demandevehicule==false"> {{ "Action.succes" | translate }}</button>
+              <button (click)="genererRapportPdf(element)" mat-raised-button
+                style="background-color: rgb(44, 196, 95);color: rgb(24, 22, 22);"
+                *ngIf="element.status == 5 && demandevehicule==true"> {{ "Action.fichier" | translate }}</button>
+
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>
+              <span style="margin-left: 0%">
+                {{ "register.action" | translate }}</span>
+            </th>
+            <td mat-cell *matCellDef="let element" class="fab">
+              <button mat-button [mat-menu-trigger-for]="detail" yPosition="above">
+                <mat-icon matTooltip="{{ 'utilisateur.details' | translate }}" color="secondary">
+                  more_vert
+                </mat-icon>
+              </button>
+              <mat-menu #detail="matMenu">
+                <!-- <button
+              *ngIf="element.status == 4"
+              mat-menu-item
+              (click)="openApayer(element)"
+            >
+              <mat-icon
+                matTooltip="{{ 'Action.apayer' | translate }}"
+                color="primary"
+                >payment</mat-icon
+              >{{ "Action.apayer" | translate }}
+            </button> -->
+                <button mat-menu-item (click)="openDialogView(element)">
+                  <mat-icon matTooltip="{{ 'Action.details' | translate }}" color="primary">visibility</mat-icon>{{
+                  "Action.details" | translate }}
+                </button>
+                <!-- <button
+              *ngIf="element.status == 5"
+              mat-menu-item
+              (click)="genererRapportPdf(element)"
+            >
+              <mat-icon
+                matTooltip="{{ 'Action.fichier' | translate }}"
+                color="primary"
+                >attach_file</mat-icon
+              >{{ "Action.fichier" | translate }}
+            </button> -->
+                <button *ngIf="generernumimmat" mat-menu-item (click)="openDialogGenerernumimmat(element)">
+                  <mat-icon svgIcon="immatriculation_pi" style="zoom:0.8"
+                    matTooltip="{{ 'Action.generernumimmat' | translate }}" color="primary"></mat-icon>{{
+                  "Action.generernumimmat" | translate }}
+                </button>
+                <button *ngIf="calculertarif" mat-menu-item (click)="openDialogCalculertarif(element)">
+                  <mat-icon matTooltip="{{ 'Action.calculertarif' | translate }}" color="primary">settings </mat-icon>{{
+                  "Action.calculertarif" | translate }}
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </mat-card>
+  </mat-tab>
+  <mat-tab *ngIf="!demandevehicule">
+    <ng-template mat-tab-label>
+      <mat-icon class="mymargin" color="primary">view_agenda</mat-icon>
+      {{'demandevehicule.demandetraite' | translate}}
+    </ng-template>
+    <mat-card class="">
+      <mat-card-header class="card-header">
+        <span class="header">{{ "demandevehicule.traite" | translate }}</span>
+      </mat-card-header>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "utilisateur.filtre" | translate }}</mat-label>
+        <input matInput (keyup)="applyFiltertraite($event)" />
+      </mat-form-field>
+
+      <div class="">
+        <table mat-table class="mat-elevation-z8" [dataSource]="dataSourceTraitement" matSort>
+          <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.nom" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
+          </ng-container>
+          <ng-container matColumnDef="prenom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.prenom" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.prenom }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="telephone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.telephone" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.telephone }}</td>
+          </ng-container>
+          <ng-container matColumnDef="typedemande">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "demandevehicule.typedemande" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.typedemande }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ "status" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button *ngIf="element.status == 1">Demarrer</button>
+              <button disabled mat-raised-button style="background-color: #ffe227;color: rgb(19, 18, 18);"
+                *ngIf="element.status == 2"> {{ "Action.encoursTraitement1" | translate }}</button>
+              <button disabled mat-raised-button style="background-color: #ffe227;color: rgb(19, 18, 18);"
+                *ngIf="element.status == 3">{{ "Action.encoursTraitement2" | translate }}</button>
+                <button mat-raised-button disabled style="background-color: #1a6339;color: rgb(19, 18, 18);" *ngIf="element.status == 4 && calculertarif"
+                (click)="openApayer(element)">
+                {{ "Action.apayer" | translate }}</button>
+             
+              <button mat-raised-button style="background-color: #ef4f4f;color: rgb(24, 23, 23);"
+                *ngIf="element.status == 7">{{ "Action.echec" | translate }}</button>
+
+              <button disabled mat-raised-button style="background-color: rgb(44, 196, 95);color: rgb(17, 16, 16);"
+                *ngIf="element.status == 5"> {{ "Action.succes" | translate }}</button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>
+              <span style="margin-left: 0%">
+                {{ "register.action" | translate }}</span>
+            </th>
+            <td mat-cell *matCellDef="let element" class="fab">
+              <button mat-button [mat-menu-trigger-for]="detail" yPosition="above">
+                <mat-icon matTooltip="{{ 'utilisateur.details' | translate }}" color="secondary">
+                  more_vert
+                </mat-icon>
+              </button>
+              <mat-menu #detail="matMenu">
+
+                <button mat-menu-item (click)="openDialogView(element)">
+                  <mat-icon matTooltip="{{ 'Action.details' | translate }}" color="primary">visibility</mat-icon>{{
+                  "Action.details" | translate }}
+                </button>
+
+              </mat-menu>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[2, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

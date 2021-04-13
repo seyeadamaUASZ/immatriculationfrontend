@@ -1,0 +1,106 @@
+
+<h1 class="mymargin1" mat-dialog-title>{{'plaqueimmatriculation.detail' | translate}}</h1>
+<mat-dialog-content>
+  <div class="row container">
+    <div class="col-sm-6">
+      <div class="col-lg-12 col-sm-6 col-md-3">
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>perm_identity</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.prenom' | translate}}</span><br>
+          <p class="mymargin foncer">{{result.prenom}}</p>
+        </div>
+        
+             
+        <div class="fond"><br>
+          &nbsp;<mat-icon color="primary" matSuffix>outlined_flag</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.region' | translate}}</span>
+          <p class="mymargin foncer"> {{result.region}}</p>
+        </div>
+      
+
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>drive_eta</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.marque' | translate}}</span><br>
+          <p class="mymargin foncer">{{result.marque}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>cloud_queue</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.emission' | translate}} </span><br>
+          <p class="mymargin foncer"> {{result.emissionco2}}</p>
+        </div>
+        <div class="fond" *ngIf="result.status !=2 && result.status !=7 ; else result.numeroimmat">
+          <br>
+          <mat-icon svgIcon="immatriculation_pi" style="zoom: 0.8;" color="primary"></mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.numeroImmatriculation' | translate}}</span><br>
+          <p class="mymargin foncer">{{result.numeroimmat}}</p>
+        </div>
+        <ng-template #result.numeroimmat>
+          <!-- ... -->
+      </ng-template>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="col-lg-12 col-sm-6 col-md-3">
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>perm_identity</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.nom' | translate}}</span><br>
+          <p class="mymargin foncer">{{result.nom}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>phone</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.telephone' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.telephone}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>email</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.email' | translate}}</span><br>
+          <p class="mymargin foncer">  {{email}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>colorize</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.couleur' | translate}} </span><br>
+          <p class="mymargin foncer"> {{result.couleur}}</p>
+        </div>
+        <div class="fond"><br>
+          &nbsp;<mat-icon color="primary" matSuffix>flash_on</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.puissance' | translate}}</span>
+          <p class="mymargin foncer">{{result.puissance}}</p>
+        </div>
+
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.energie' | translate}}</span><br>
+          <p class="mymargin foncer"> {{result.marque}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.typeusage' | translate}}</span><br>
+          <p class="mymargin foncer"> {{result.typeusage}}</p>
+        </div>
+        <div class="fond" *ngIf="result.typedemande=='ancien'; else result.codecession">
+          <br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.codecession' | translate}}</span><br>
+          <p class="mymargin foncer"> {{result.codecession}}</p>
+        </div>
+        <ng-template #result.codecession>
+          <!-- ... -->
+      </ng-template>
+      <div class="fond" *ngIf="result.status ==7">
+        <br>
+        <!-- <mat-icon color="primary" matSuffix>description</mat-icon>&nbsp; -->
+        <span style="margin-left: 15px;">{{'plaqueimmatriculation.motifRejet' | translate}}</span><br><br>
+        <p class="mymargindesk foncer">{{result.motifrejet}}</p>
+         
+      </div>
+      </div>
+    </div>
+    
+  </div>
+ 
+
+
+  <button (click)="closeDialog()" mat-stroked-button class="buttons foncer" color="warn">{{'btn_fermer' |
+    translate}}</button>&nbsp;&nbsp;&nbsp;
+ 
+</mat-dialog-content>

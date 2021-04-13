@@ -1,0 +1,69 @@
+<div class="">
+  <div class="">
+    <h3 class="card-heading">
+      <strong class="foncer"> {{'generernumimmat.register' | translate}}
+      </strong>
+    </h3>
+    <div class="row">
+      <div class="col-sm-6">
+        {{ 'demandevehicule.region' | translate}}: {{sousmissionPrecedente?.region}}
+
+      </div>
+      <div class="col-sm-6">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 container-fluid">
+        <div class="fileBtn" (click)="openDialogAdd()"
+          ><div>{{ "Action.fileCIN" | translate }}</div></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="fileBtn" (click)="openDialogAddCert()"
+          ><div>{{ "Action.fileCertificatVente" | translate }}</div></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="fileBtn"    (click)="openDialogAddAtt()"
+         ><div>{{ "Action.fileAttestationDIC" | translate }}</div></div>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="fileBtn" (click)="openDialogAddCerti()"
+          ><div>{{ "Action.fileCertificatCirculation" | translate }}</div></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="fileBtn" (click)="openDialogAddAssu()"
+          ><div>{{ "Action.fileAssurance" | translate }}</div></div>
+      </div>
+
+    </div>
+
+    <form class="" [formGroup]="GenerernumimmatForm" (ngSubmit)="onSubmit()">
+      <br>
+      <mat-radio-group appearance="fill" formControlName="valider">
+        <mat-radio-button [value]="true">{{'generernumimmat.valider' | translate }}</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-radio-button [value]="false">{{'generernumimmat.echec' | translate }}</mat-radio-button><br>
+      </mat-radio-group>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>{{'generernumimmat.numeroimmat' | translate }} </mat-label>
+        <input matInput type="text" formControlName="numeroimmat" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{'generernumimmat.motifrejet' | translate }} </mat-label>
+        <input matInput type="text" formControlName="motifrejet" required />
+      </mat-form-field>
+
+      <!-- <label>{{
+        'generernumimmat.validation' | translate }}</label><br> -->
+      <!-- <input type="checkbox" formControlName="valider" required> -->
+      <div class="buttons">
+        <div class="login">
+          <button mat-stroked-button color="warn" (click)="closeDialog()" type="button">{{'btn_fermer' |
+            translate}}</button>
+          <button mat-raised-button color="primary" type="submit">{{'btn_valider' | translate}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

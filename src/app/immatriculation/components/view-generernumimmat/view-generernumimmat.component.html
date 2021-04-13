@@ -1,0 +1,258 @@
+<h1 class="mymargin1" mat-dialog-title>{{'plaqueimmatriculation.detail' | translate}}</h1>
+
+<mat-dialog-content>
+  <div class="row container">
+    <div class="col-sm-6">
+      <div class="col-lg-12 col-sm-6 col-md-3">
+
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>perm_identity</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.nbPlaceDebout' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.nbPlaceDebout}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>email</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.nbPlaceAssises' | translate}}</span><br>
+          <p class="mymargin foncer">   {{result.nbPlaceAssises}}</p>
+        </div>
+        
+       
+       
+        <div class="fond"><br>
+          &nbsp;<mat-icon color="primary" matSuffix>outlined_flag</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.taxeRegionale' | translate}}</span>
+          <p class="mymargin foncer">  {{result.taxeRegionale}}</p>
+        </div>
+      
+
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>drive_eta</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.taxeParafiscale' | translate}}</span><br>
+          <p class="mymargin foncer"> {{result.taxeParafiscale}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>cloud_queue</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.taxeCO2' | translate}} </span><br>
+          <p class="mymargin foncer">  {{result.taxeCO2}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon svgIcon="immatriculation_pi" style="zoom: 0.8;" color="primary"></mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.fraisTraitementDossier' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.fraisTraitementDossier}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="col-lg-12 col-sm-6 col-md-3">
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>perm_identity</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.nom' | translate}}</span><br>
+          <p class="mymargin foncer">{{result.nom}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>phone</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.telephone' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.telephone}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>colorize</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.couleur' | translate}} </span><br>
+          <p class="mymargin foncer"> {{result.couleur}}</p>
+        </div>
+        <div class="fond"><br>
+          &nbsp;<mat-icon color="primary" matSuffix>flash_on</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.puissance' | translate}}</span>
+          <p class="mymargin foncer">{{result.puissance}}</p>
+        </div>
+        
+
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.energie' | translate}}</span><br>
+          <p class="mymargin foncer"> {{result.marque}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.carosserie' | translate}}</span><br>
+          <p class="mymargin foncer">   {{result.carosserie}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.carosserie' | translate}}</span><br>
+          <p class="mymargin foncer">   {{result.carosserie}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.largeurVehicule' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.largeurVehicule}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.longeurVehicule' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.longeurVehicule}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.typeVarianteVersion' | translate}}</span><br>
+          <p class="mymargin foncer">  {{result.typeVarianteVersion}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.genreVehicule' | translate}}</span><br>
+          <p class="mymargin foncer">   {{result.genreVehicule}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.regionExpedition' | translate}}</span><br>
+          <p class="mymargin foncer"> 
+            {{result.regionExpedition}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.tarif' | translate}}</span><br>
+          <p class="mymargin foncer"> 
+            {{result.tarif}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.sexe' | translate}}</span><br>
+          <p class="mymargin foncer"> 
+            {{result.sexe}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.region' | translate}}</span><br>
+          <p class="mymargin foncer"> 
+            {{result.sexe}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.typeImmatriculation' | translate}}</span><br>
+          <p class="mymargin foncer"> 
+            {{result.typeImmatriculation}}</p>
+        </div>
+        <div class="fond"><br>
+          <mat-icon color="primary" matSuffix>ev_station</mat-icon>&nbsp;
+          <span>{{'plaqueimmatriculation.precedenteImmat' | translate}}</span><br>
+          <p class="mymargin foncer"> 
+            {{result.precedenteImmat}}</p>
+        </div>
+       
+        
+      </div>
+    </div>
+  </div>
+
+
+  <button (click)="closeDialog()" mat-stroked-button class="buttons foncer" color="warn">{{'btn_fermer' |
+    translate}}</button>&nbsp;&nbsp;&nbsp;
+ 
+</mat-dialog-content>
+    <div class="row">
+      <div class="col-sm-6 col-lg-6 col-md-6">           
+       
+      
+        <mat-label><strong>{{'plaqueimmatriculation.precedenteImmat' | translate}}</strong>:
+
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.dateImmatVehicule' | translate}}</strong>:
+
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.dateMiseCirculation' | translate}}</strong>:
+
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.datePrecedenteImmatriculation' | translate}}</strong>:
+
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.couleur' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.marque' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.puissance' | translate}}</strong>:
+        </mat-label>
+        <br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.emission' | translate}}</strong>:
+        </mat-label>
+        <br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.energie' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.telephone' | translate}}</strong>:
+        </mat-label>
+        <br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.dateNaissance' | translate}}</strong>:
+
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.lieuNaissance' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.nom' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.email' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.prenom' | translate}}</strong>:
+        </mat-label><br>
+        <hr>
+        <mat-label><strong>{{'plaqueimmatriculation.numeroImmatriculation' | translate}}</strong>:
+
+        </mat-label><br>
+        <hr>
+
+      </div>
+      <div class="col-sm-6 col-lg-6 col-md-6">
+
+     
+
+        {{result.dateImmatVehicule}}<br>
+        <hr>
+
+        {{result.dateMiseCirculation}}<br>
+        <hr>
+
+        {{result.datePrecedenteImmatriculation}}<br>
+        <hr>
+        {{result.couleur}}<br>
+        <hr>
+        {{result.marque}}<br>
+        <hr>
+        {{result.puissance}}
+        <br>
+        <hr>
+        {{result.emission}}
+        <br>
+        <hr>
+        {{result.energie}}<br>
+        <hr>
+        {{result.telephone}}
+        <br>
+        <hr>
+        {{result.dateNaissance}}
+        <br>
+        <hr>
+        {{result.lieuNaissance}}
+        <br>
+        <hr>
+        {{result.nom}}<br>
+        <hr>
+        {{result.email}}<br>
+        <hr>
+        {{result.prenom}}<br>
+        <hr>
+        {{result.numeroImmatriculation}}<br>
+        <hr>
+      </div>
+    </div>
+ 
+

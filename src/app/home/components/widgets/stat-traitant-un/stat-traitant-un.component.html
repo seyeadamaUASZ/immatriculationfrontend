@@ -1,0 +1,47 @@
+
+    <mat-card>
+
+      <mat-card-content>
+        <div class="row" style="margin-top: 15px;">
+
+          <div class="col-md-4 col-sm-3 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-aqua"><i class="fa fa-close"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.totaldemandevrejeter}}</span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.totaldemandevericulrejeter' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-3 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-yellow"><i class="fa fa-spinner"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.totaldemandevencour}}<small></small></span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.totalencoursdetraitement' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-3 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-blue"><i class="fa fa-thumbs-up"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.totaldemandevtraiter}}<small></small></span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.totaldemandetraiter' | translate }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 col-sm-3 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.totaldemandevtransmis}}<small></small></span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.totaltransmisenvalidation' | translate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+
+    </mat-card>

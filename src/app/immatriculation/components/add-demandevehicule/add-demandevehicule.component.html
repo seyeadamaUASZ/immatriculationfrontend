@@ -1,0 +1,352 @@
+<div class="login-page">
+  <div class="login-spacer"></div>
+  <div class="">
+    <h3 class="card-heading">
+      <strong class="foncer"> {{'demandevehicule.register' | translate}}
+      </strong>
+    </h3>
+
+
+    <form class="" [formGroup]="DemandevehiculeForm" (ngSubmit)="onSubmit()">
+      <mat-horizontal-stepper [linear]="false" #stepper>
+
+        <mat-step>
+          <!-- <ng-template matStepLabel>{{'demandevehicule.titreInfosDemandeur' | translate}}</ng-template> -->
+          <div class="container-fluid">
+            <strong>{{'demandevehicule.titreInfosDemandeur' | translate}}</strong>
+          </div>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.prenom' | translate }}</mat-label>
+            <input matInput placeholder="" type="text" formControlName="prenom" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.nom' | translate }}</mat-label>
+            <input matInput placeholder="" type="text" formControlName="nom" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.adresse' | translate }}</mat-label>
+            <input matInput placeholder="" type="text" formControlName="adresse" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.telephone' | translate }}</mat-label>
+            <input matInput placeholder="" type="tel" formControlName="telephone" required>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.sexe' | translate }}</mat-label>
+            <mat-select formControlName="sexe">
+              <mat-option value="masculin">{{ 'demandevehicule.masculin' | translate }}</mat-option>
+              <mat-option value="feminin">{{ 'demandevehicule.feminin' | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="buttons">
+            <div class="login">
+              <button mat-stroked-button color="warn" (click)="closeDialog()" type="button">{{'btn_fermer' |
+                translate}}</button>
+              <button mat-raised-button color="primary" matStepperNext type="button">{{'application.next' |
+                translate}}</button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <!-- <ng-template matStepLabel>{{'demandevehicule.titreInfosVehicule' | translate}}</ng-template> -->
+          <div class="container-fluid">
+            <strong>{{'demandevehicule.titreInfosVehicule' | translate}}</strong>
+          </div>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.typeDemande' | translate }}</mat-label>
+            <mat-select [(ngModel)]="typeVehicule" formControlName="typedemande" (change)="setReadeOnlyForOld()">
+              <mat-option value="neuve">{{ 'demandevehicule.voitureNeuve' | translate }}</mat-option>
+              <mat-option value="ancien">{{ 'demandevehicule.voitureAncien' | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" *ngIf="typeVehicule=='ancien'">
+            <mat-label>{{ 'demandevehicule.numeroImmat' | translate }}</mat-label>
+            <input [matAutocomplete]="auto" matInput placeholder="" type="text" formControlName="numeroimmat" required>
+
+            <mat-autocomplete [panelWidth]="auto" autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option.numeroimmat"
+                (click)="setOldDemande(option)">
+                <div style="word-break: break-all !important; width: fit-content;height: fit-content;">{{option}}</div>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.typeusage' | translate }}</mat-label>
+            <mat-select formControlName="typeusage">
+              <mat-option value="particulier">{{ 'demandevehicule.particulier' | translate }}</mat-option>
+              <mat-option value="transport en commun">{{ 'demandevehicule.transportEnCommun' | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.datemiseencirculation' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="date"
+              formControlName="datemiseencirculation" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" *ngIf="typeVehicule=='neuve'">
+            <mat-label>{{ 'demandevehicule.emissionco2' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="emissionco2"
+              required>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill" *ngIf="typeVehicule=='neuve'">
+      <mat-label>{{ 'demandevehicule.energie' | translate }}</mat-label>
+      <input matInput placeholder="" type="text" formControlName="energie" required>
+    </mat-form-field> -->
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.energie' | translate }}</mat-label>
+            <mat-select [disabled]="readonlyforold" formControlName="energie">
+              <mat-option value="Electricité">{{ 'demandevehicule.electricite' | translate }}</mat-option>
+              <mat-option value="Essence">{{ 'demandevehicule.essence' | translate }}</mat-option>
+              <mat-option value="Gaz">{{ 'demandevehicule.gaz' | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" >
+            <mat-label>{{ 'demandevehicule.genrevehicule' | translate }}</mat-label>
+            <mat-select [disabled]="readonlyforold" formControlName="genrevehicule" [(ngModel)]="type">
+              <mat-option value="voiture">{{ 'demandevehicule.voiture' | translate }}</mat-option>
+              <mat-option value="camion">{{ 'demandevehicule.camion' | translate }}</mat-option>
+              <mat-option value="bus">{{ 'demandevehicule.bus' | translate }}</mat-option>
+              <mat-option value="moto">{{ 'demandevehicule.moto' | translate }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.region' | translate }}</mat-label>
+            <mat-select formControlName="region">
+              <mat-option value="DK">Dakar</mat-option>
+              <mat-option value="TH">Thiès</mat-option>
+              <mat-option value="ZG">Ziguinchor</mat-option>
+              <mat-option value="SL">Saint Louis</mat-option>
+              <mat-option value="DB">Diourbel</mat-option>
+              <mat-option value="FT">Fatick</mat-option>
+              <mat-option value="KF">Kaffrine</mat-option>
+              <mat-option value="KG">Kédougou</mat-option>
+              <mat-option value="KL">Kaolack</mat-option>
+              <mat-option value="KD">Kolda</mat-option>
+              <mat-option value="LG">Louga</mat-option>
+              <mat-option value="MT">Matam</mat-option>
+              <mat-option value="SD">Sédhiou</mat-option>
+              <mat-option value="TD">Tambacounda</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+          <div class="buttons">
+            <div class="login">
+              <button mat-stroked-button color="warn" matStepperPrevious type="button">{{'application.back' |
+                translate}}</button>
+              <button mat-raised-button color="primary" matStepperNext type="button">{{'application.next' |
+                translate}}</button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <!-- <ng-template matStepLabel>{{'demandevehicule.titreInfosVehicule' | translate}}</ng-template> -->
+          <div class="container-fluid">
+            <strong>{{'demandevehicule.titreInfosVehicule' | translate}}</strong>
+          </div>
+          <br>
+          <mat-form-field appearance="fill" *ngIf="type!='moto'">
+            <mat-label>{{ 'demandevehicule.placesassises' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="number" formControlName="placesassises"
+              required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" *ngIf="type!='moto'">
+            <mat-label>{{ 'demandevehicule.placesdebout' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="number" formControlName="placesdebout"
+              required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" *ngIf="type!='moto'">
+            <mat-label>{{ 'demandevehicule.carrosserie' | translate }}</mat-label>
+            <mat-select   [disabled]="readonlyforold" formControlName="carosserie">
+              <mat-option value="Berline">Berline
+              </mat-option>
+              <mat-option value="Break">Break
+              </mat-option>
+              <mat-option value="Monospace">Monospace
+              </mat-option>
+              <mat-option value="Coupé">Coupé
+              </mat-option>
+              <mat-option value="Cabriolet">
+                Cabriolet</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <!-- <mat-form-field appearance="fill" *ngIf="typeVehicule=='ancien'">
+            <mat-label>{{ 'demandevehicule.codeCession' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="codecession"
+              required>
+          </mat-form-field> -->
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.puissance' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="puissance" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.typevarianteversion' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="typevarianteversion"
+              required>
+          </mat-form-field>
+
+          <div class="buttons">
+            <div class="login">
+              <button mat-stroked-button color="warn" matStepperPrevious type="button">{{'application.back' |
+                translate}}</button>
+              <button mat-raised-button color="primary" matStepperNext type="button">{{'application.next' |
+                translate}}</button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <!-- <ng-template matStepLabel>{{'demandevehicule.titreInfosVehicule' | translate}}</ng-template> -->
+          <div class="container-fluid">
+            <strong>{{'demandevehicule.titreInfosVehicule' | translate}}</strong>
+          </div>
+          <br>
+          <mat-form-field appearance="fill" >
+            <mat-label>{{ 'demandevehicule.couleur' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="couleur" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>{{ 'demandevehicule.largeur' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="largeur" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" >
+            <mat-label>{{ 'demandevehicule.longeur' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="longeur" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" >
+            <mat-label>{{ 'demandevehicule.marque' | translate }}</mat-label>
+            <input [readonly]="readonlyforold" matInput placeholder="" type="text" formControlName="marque" required>
+          </mat-form-field>
+
+
+          <div class="buttons">
+            <div class="login">
+              <button mat-stroked-button color="warn" matStepperPrevious type="button">{{'application.back' |
+                translate}}</button>
+              <button mat-raised-button color="primary" matStepperNext type="button">{{'application.next' |
+                translate}}</button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <!-- <ng-template matStepLabel>{{'demandevehicule.titreFichiersJoints' | translate}}</ng-template> -->
+          <div class="container-fluid">
+            <strong>{{'demandevehicule.titreFichiersJoints' | translate}}</strong>
+          </div>
+          <br>
+          <div class="row">
+            <input type="file" placeholder="Sélectionnez un ou des fichiers" #file1 style="display: none;"
+              (change)="onFilesAdded1()" />
+            <input type="file" placeholder="Sélectionnez un ou des fichiers" #file2 style="display: none;"
+              (change)="onFilesAdded2()" />
+            <input type="file" placeholder="Sélectionnez un ou des fichiers" #file3 style="display: none;"
+              (change)="onFilesAdded3()" />
+            <input type="file" placeholder="Sélectionnez un ou des fichiers" #file4 style="display: none;"
+              (change)="onFilesAdded4()" />
+            <input type="file" placeholder="Sélectionnez un ou des fichiers" #file5 style="display: none;"
+              (change)="onFilesAdded5()" />
+
+            <div class="container-fluid col-sm-6" (click)="addFiles1()">
+              <div class="file_upload">
+                <div class="container-fluid row">
+                  <mat-icon>get_app</mat-icon>
+                </div>
+                <div class="container-fluid file_titre">
+                  {{'demandevehicule.fileCIN' | translate}}
+                </div>
+                <div class="container-fluid file_name" *ngIf="ffile1">
+                  {{ffile1.name}}
+
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid col-sm-6" (click)="addFiles2()">
+              <div class="file_upload">
+                <div class="container-fluid row">
+                  <mat-icon>get_app</mat-icon>
+                </div>
+                <div class="container-fluid file_titre">
+                  {{'demandevehicule.fileAssurance' | translate}}
+                </div>
+                <div class="container-fluid file_name" *ngIf="ffile2">
+                  {{ffile2.name}}
+
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid col-sm-6" (click)="addFiles3()">
+              <div class="file_upload">
+                <div class="container-fluid row">
+                  <mat-icon>get_app</mat-icon>
+                </div>
+                <div class="container-fluid file_titre">
+                  {{'demandevehicule.fileCertificatCirculation' | translate}}
+                </div>
+                <div class="container-fluid file_name" *ngIf="ffile3">
+                  {{ffile3.name}}
+
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid col-sm-6" (click)="addFiles4()">
+              <div class="file_upload">
+                <div class="container-fluid row">
+                  <mat-icon>get_app</mat-icon>
+                </div>
+                <div class="container-fluid file_titre">
+                  {{'demandevehicule.fileCertificatVente' | translate}}
+                </div>
+                <div class="container-fluid file_name" *ngIf="ffile4">
+                  {{ffile4.name}}
+
+                </div>
+              </div>
+            </div>
+            <div *ngIf="typeVehicule=='ancien'" class="container-fluid col-sm-6" (click)="addFiles5()">
+              <div class="file_upload">
+                <div class="container-fluid row">
+                  <mat-icon>get_app</mat-icon>
+                </div>
+                <div class="container-fluid file_titre">
+                  {{'demandevehicule.fileAttestationDIC' | translate}}
+                </div>
+                <div class="container-fluid file_name" *ngIf="ffile5">
+                  {{ffile5.name}}
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="buttons">
+            <div class="login">
+              <button mat-stroked-button color="warn" matStepperPrevious type="button">{{'application.back' |
+                translate}}</button>
+              <button mat-raised-button color="primary" type="submit">{{'btn_valider' | translate}}</button>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+
+
+
+
+      <!-- <div class="buttons">
+        <div class="login">
+          <button mat-stroked-button color="warn" (click)="closeDialog()" type="button">{{'btn_fermer' |
+            translate}}</button>
+          <button mat-raised-button color="primary" type="submit">{{'btn_valider' | translate}}</button>
+        </div>
+      </div> -->
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="login-page">
+  <div class="login-spacer"></div>
+  <div class="">
+    <h3 class="card-heading">
+      <strong class="foncer">
+        {{ "calculertarif.register" | translate }}
+      </strong>
+    </h3>
+    <form class="" [formGroup]="CalculertarifForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'calculertarif.fraistraitementdossier' | translate }}</mat-label>
+        <input matInput placeholder="" type="number" formControlName="fraistraitementdossier" required />
+      </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>{{ 'calculertarif.tarif' | translate }}</mat-label>
+        <input matInput placeholder="" type="text" formControlName="tarif" required />
+      </mat-form-field> -->
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'calculertarif.taxeco2' | translate }}</mat-label>
+        <input matInput placeholder="" type="number" formControlName="taxeco2" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'calculertarif.taxeparafiscale' | translate }}</mat-label>
+        <input matInput placeholder="" type="number" formControlName="taxeparafiscale" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'calculertarif.taxeregionale' | translate }}</mat-label>
+        <input matInput placeholder="" type="number" formControlName="taxeregionale" required />
+      </mat-form-field>
+      <div class="buttons">
+        <div class="login">
+          <button mat-stroked-button color="warn" (click)="closeDialog()" type="button">
+            {{ "btn_fermer" | translate }}
+          </button>
+          <button mat-raised-button color="primary" type="submit">
+            {{ "btn_valider" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

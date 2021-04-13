@@ -1,0 +1,42 @@
+
+    <mat-card>
+      <mat-card-content>
+        <div class="row" style="margin-top: 15px;">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-yellow"><i class="fa fa-spinner"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.donneeencours}} </span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.encourvalidationtraitement' | translate }} </span>
+              </div>
+            </div>
+          </div> 
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.donneeterminer}} <small></small></span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.demandesvalide' | translate }} </span>
+              </div>
+            </div>
+          </div>
+         
+         
+          <div class="col-md-4 col-sm-3 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-red"><i class="fa fa-close"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number color">{{this.donneerejeter}}<small></small></span><br>
+                <span class="info-box-text color1">{{ 'demandevehicule.demandenonvalider' | translate }}</span>
+              </div>
+            </div>
+          </div>
+
+         
+        </div>
+    
+      
+       
+      </mat-card-content>
+     
+    </mat-card>

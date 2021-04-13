@@ -1,0 +1,289 @@
+<mat-card class="">
+  <mat-card-header class="card-header">
+    <span class="header">PlaqueImmatriculation</span>
+  </mat-card-header>
+  <mat-form-field appearance="outline">
+    <mat-label>{{ "utilisateur.filtre" | translate }}</mat-label>
+    <input matInput (keyup)="applyFilter($event)" />
+  </mat-form-field>
+  <button
+    mat-mini-fab
+    color="primary"
+    class="add-contact"
+    (click)="openDialogAdd()"
+    matTooltip="{{ 'plaqueimmatriculation.add' | translate }}"
+  >
+    <mat-icon>person_add</mat-icon>
+  </button>
+  <div class="">
+    <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+      <!-- <ng-container matColumnDef="nbPlaceDebout">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.nbPlaceDebout" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.nbPlaceDebout }}</td>
+      </ng-container>
+      <ng-container matColumnDef="nbPlaceAssises">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.nbPlaceAssises" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.nbPlaceAssises }}</td>
+      </ng-container>
+      <ng-container matColumnDef="taxeRegionale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.taxeRegionale" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.taxeRegionale }}</td>
+      </ng-container>
+      <ng-container matColumnDef="taxeParafiscale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.taxeParafiscale" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.taxeParafiscale }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="taxeCO2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.taxeCO2" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.taxeCO2 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="fraisTraitementDossier">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.fraisTraitementDossier" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fraisTraitementDossier }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="carosserie">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.carosserie" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.carosserie }}</td>
+      </ng-container>
+      <ng-container matColumnDef="largeurVehicule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.largeurVehicule" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.largeurVehicule }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="longeurVehicule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.longeurVehicule" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.longeurVehicule }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="typeVarianteVersion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.typeVarianteVersion" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.typeVarianteVersion }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="genreVehicule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.genreVehicule" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.genreVehicule }}</td>
+      </ng-container>
+      <ng-container matColumnDef="regionExpedition">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.regionExpedition" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.regionExpedition }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="tarif">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.tarif" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.tarif }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sexe">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.sexe" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.sexe }}</td>
+      </ng-container>
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.region" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.region }}</td>
+      </ng-container>
+      <ng-container matColumnDef="typeImmatriculation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.typeImmatriculation" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.typeImmatriculation }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="precedenteImmat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.precedenteImmat" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.precedenteImmat }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dateImmatVehicule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.dateImmatVehicule" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateImmatVehicule }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dateMiseCirculation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.dateMiseCirculation" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateMiseCirculation }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="datePrecedenteImmatriculation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{
+            "plaqueimmatriculation.datePrecedenteImmatriculation" | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.datePrecedenteImmatriculation }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="couleur">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.couleur" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.couleur }}</td>
+      </ng-container>
+      <ng-container matColumnDef="marque">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.marque" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.marque }}</td>
+      </ng-container>
+      <ng-container matColumnDef="puissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.puissance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.puissance }}</td>
+      </ng-container>
+      <ng-container matColumnDef="emission">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.emission" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.emission }}</td>
+      </ng-container>
+      <ng-container matColumnDef="energie">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.energie" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.energie }}</td>
+      </ng-container>
+     
+      <ng-container matColumnDef="dateNaissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.dateNaissance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.dateNaissance }}</td>
+      </ng-container>
+      <ng-container matColumnDef="lieuNaissance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.lieuNaissance" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.lieuNaissance }}</td>
+      </ng-container> -->
+      <ng-container matColumnDef="telephone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.telephone" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.telephone }}</td>
+      </ng-container>
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.nom" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.email" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container> -->
+      <ng-container matColumnDef="prenom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.prenom" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.prenom }}</td>
+      </ng-container>
+      <ng-container matColumnDef="numeroImmatriculation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "plaqueimmatriculation.numeroImmatriculation" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.numeroImmatriculation }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>
+          <span style="margin-left: 0%">
+            {{ "register.action" | translate }}</span
+          >
+        </th>
+        <td mat-cell *matCellDef="let element" class="fab">
+          <button mat-button [mat-menu-trigger-for]="detail" yPosition="above">
+            <mat-icon
+              matTooltip="{{ 'utilisateur.details' | translate }}"
+              color="secondary"
+            >
+              more_vert
+            </mat-icon>
+          </button>
+          <mat-menu #detail="matMenu">
+            <button mat-menu-item (click)="openDialogView(element)">
+              <mat-icon
+                matTooltip="{{ 'Action.details' | translate }}"
+                color="primary"
+                >visibility </mat-icon
+              >{{ "Action.details" | translate }}
+            </button>
+            <button mat-menu-item (click)="openDialogUpdate(element)">
+              <mat-icon
+                matTooltip="{{ 'Action.edit' | translate }}"
+                color="secondary"
+                >edit</mat-icon
+              >
+              {{ "Action.edit" | translate }}
+            </button>
+            <button mat-menu-item (click)="openDialogDeleteUser(element)">
+              <mat-icon
+                color="warn"
+                matTooltip="{{ 'Action.delete' | translate }}"
+                >delete</mat-icon
+              >
+              {{ "Action.delete" | translate }}
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</mat-card>
